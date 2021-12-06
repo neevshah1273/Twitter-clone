@@ -2,7 +2,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
 import userRoutes from './routes/users.js';
-
+import tweetRoutes from './routes/tweets.js';
 
 const app = express();
 
@@ -11,6 +11,7 @@ app.use(express.urlencoded({limit : "30mb", extended: true}));
 app.use(cors());
 
 app.use('/user',userRoutes);
+app.use('/tweet',tweetRoutes);
 
 const CONNECTION_URL = 'mongodb+srv://NeevShah:x9IcEHC1iaNuYm57@cluster0.ln8cj.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
 const PORT = process.env.PORT || 5000;

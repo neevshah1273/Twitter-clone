@@ -8,4 +8,4 @@ const userSchema = mongoose.Schema({
     following:[{type:ObjectId,ref:"User"}]
 })
 
-export default mongoose.model('user', userSchema);
+export default mongoose.model('User', userSchema);

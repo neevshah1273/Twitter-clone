@@ -1,17 +1,18 @@
 import React,{useState} from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-
+import {Input,Form} from 'reactstrap';
 import { signin, signup } from '../../actions/auth';
 import './LogIn.css';
 
 
 const styles = {
-  facebookBtn: {
+  statbtn: {
     backgroundColor: 'rgb(51, 89, 157)',
   },
   form: {
-    textAlign: 'center'
+    textAlign: 'center',
+  
   }
 }
 
@@ -21,6 +22,7 @@ const LogIn = () =>{
   const dispatch = useDispatch();
   
   const navigate = useNavigate();
+
   const handleChange = (e) => {
     console.log(e.target.name);
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -49,13 +51,18 @@ const handleSubmit = (e) => {
 
     return(
         <div>
-            <form style={styles.form} onSubmit={handleSubmit}>
+            <Form style={styles.form} onSubmit={handleSubmit} className="fm">
           <h4>Welcome Back!</h4>
           <div className='form-group row'>
-            <input className='input' onChange={handleChange} type='text' placeholder='Email' name="email"/>
+            <Input className='input' onChange={handleChange} type='text' placeholder='Email' name="email"/>
           </div>
           <div className='form-group row'>
-            <input className='input' onChange={handleChange} type='password' placeholder='Password' name="password"/>
+            <Input className='input' 
+                    onChange={handleChange} 
+                    type='password' 
+                    placeholder='Password'
+                    name="password"
+            />
           </div>
           <div className='form-group row'>
             <button className='btn' type='submit'>
@@ -65,9 +72,9 @@ const handleSubmit = (e) => {
             </button>
           </div>
           
-        </form>
-        <div className='form-group row'>
-            <button className='fb' onClick={switchMode}>     
+        </Form>
+        <div className='row fb'>
+            <button className='fbb' onClick={switchMode}>     
 
                {
                  isSignup ? ("Already have an account? Login") : ("Don't have Account? Sign up")

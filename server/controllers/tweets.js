@@ -2,21 +2,33 @@ import Tweet from "../models/Tweet.js";
 import user from "../models/user.js";
 
 export const createTweet = async(req,res) => {
-    const tweet = req.body;
-
-    const newTweet = new Tweet(tweet);
+    //console.log('Not Reached');
+    const {newTweet,userid} = req.body;
+    console.log(newTweet);
+    console.log(userid);
+    
+    const cuser=user.findById(userid).then((result)=>{
+        const newTt = new Tweet({
+            'body':newTweet,
+            'postedBy':result});
+            try {
+        
+                newTt.save().then(()=>{
+                    res.status(201).json(newTt);
+                    console.log('sucess');    
+                })
+        
+            } catch (error) {
+                //console.log(error.message);
+                res.status(409).json({message : error.message});
+            }
+    
+    })
+    //console.log(cuser);
 
     
 
-    try {
-        
-        await newTweet.save();
-
-        res.status(201).json(newTweet);
-    } catch (error) {
-        //console.log(error);
-        res.status(409).json({message : error.message});
-    }
+    
 }
 
 export const getTweet = async(req,res) => {

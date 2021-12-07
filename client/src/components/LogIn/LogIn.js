@@ -1,6 +1,6 @@
 import React,{useState} from "react";
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import {Input,Form} from 'reactstrap';
 import { signin, signup } from '../../actions/auth';
 import './LogIn.css';

@@ -10,4 +10,3 @@ To run the project:
 
 Features remaining
 1. Add limit of 140 char
-2. Getting posted tweets in front-end

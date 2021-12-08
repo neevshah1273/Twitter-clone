@@ -2,7 +2,7 @@ import React,{useEffect,useState} from "react";
 import {TextField} from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { createTweets } from "../../actions/tweets";
+import { createTweets, getGlobal } from "../../actions/tweets";
 import { Input } from "reactstrap";
 import './Feed.css';
 
@@ -21,6 +21,19 @@ const Feed = () => {
         setUser(null);
     }
 
+    const traverseGlobal = (e) => {
+        e.preventDefault();
+        try {
+            console.log('trying');
+            dispatch(getGlobal(navigate));
+        } catch (error) {
+            console.log(error.message);
+        }
+        
+        //console.log('Clicking this button');
+        //navigate('/GlobalT');
+    }
+
     useEffect(() => {
         const token = user?.token;
 
@@ -35,9 +48,6 @@ const Feed = () => {
         Settweettext('');
     }
 
-    const GoGloble = () => {
-        navigate('/global');
-    }
 
     const [tweettext,Settweettext] = useState('')
 
@@ -61,6 +71,12 @@ const Feed = () => {
             </button>
             </div>
             <div>
+                <button onClick={traverseGlobal}>
+                    Go Global
+                </button>
+            </div>
+            <div>
+                
                 Tweets here
             </div>
         </div>

@@ -5,6 +5,5 @@ import auth from './auth';
 import users from './users';
 
 export default combineReducers({
-    tweets,
-    auth,users
+    tweets,auth,users
 });

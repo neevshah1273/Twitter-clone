@@ -11,6 +11,26 @@ export const getTweets = () => async(dispatch)=>{
     }
 }
 
+export const getGlobal = (navigate) => async(dispatch)=>{
+    console.log('F');
+    try {
+        console.log('asd');
+        const {data} = await api.fetchGlobal();
+
+        console.log({data});
+        
+
+
+        dispatch({type:'FETCH_GLOBAL',payload:data});
+
+        navigate('/GlobalT');
+
+    } catch (error) {
+        console.log(error.message);
+    }
+}
+
+
 export const createTweets = (text,userid) => async(dispatch) =>{
 
     

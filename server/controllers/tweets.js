@@ -30,7 +30,22 @@ export const createTweet = async(req,res) => {
 
     
 }
+export const getallTweet = async(req,res) => {
 
+    //console.log('working till here');
+    const result = Tweet.find()
+    .populate("postedBy","_id name")
+    .populate("comments.postedBy","_id name")
+    .sort('-createdAt')
+    .then(tweets=>{
+        console.log(tweets);
+        console.log('sucess');
+        res.json({tweets})
+    })
+    .catch(err=>{
+        console.log(err)
+    })
+}
 export const getTweet = async(req,res) => {
     
     const {userid} = req.body;
